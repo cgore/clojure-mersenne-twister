@@ -4,7 +4,10 @@
    [org.apache.commons.math3.random MersenneTwister]))
 
 (defn new-generator
-  "Create a new Mersenne Twister generator instance."
+  "Creates a new Mersenne Twister random number generator.
+
+  The instance is initialized using the current time plus the system identity
+  hash code of this instance as the seed."
   []
   (new MersenneTwister))
 
@@ -13,8 +16,17 @@
   (delay (new-generator)))
 
 (defn next-boolean
-  "Return the next boolean value from the generator."
+  "Returns the next pseudorandom, uniformly distributed boolean value from this
+  random number generator's sequence."
   ([]
    (next-boolean @generator))
-  ([generator]
+  ([^MersenneTwister generator]
    (.nextBoolean ^MersenneTwister generator)))
+
+(defn next-double
+  "Returns the next pseudorandom, uniformly distributed double value between 0.0
+  and 1.0 from this random number generator's sequence."
+  ([]
+   (next-double @generator))
+  ([^MersenneTwister generator]
+   (.nextDouble ^MersenneTwister generator)))
