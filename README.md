@@ -32,7 +32,16 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 (next-double) ; get a double
 (next-gaussian) ; get a normally distributed double
 (next-int) ; get an int
+;; ... other stuff ...
 ```
+
+* `new-generator`
+* `generator`
+* `next-boolean`
+* `next-double`
+* `next-float`
+* `next-gaussian`
+* `next-int`
 
 ## TODO 
 
