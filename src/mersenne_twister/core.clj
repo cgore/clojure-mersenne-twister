@@ -39,3 +39,12 @@
   ([^MersenneTwister generator]
    (.nextFloat ^MersenneTwister generator)))
 
+(defn next-gaussian
+  "Returns the next pseudorandom, Gaussian (\"normally\") distributed double value
+  with mean 0.0 and standard deviation 1.0 from this random number generator's
+  sequence."
+  ([]
+   (next-gaussian @generator))
+  ([^MersenneTwister generator]
+   (.nextGaussian ^MersenneTwister generator)))
+
