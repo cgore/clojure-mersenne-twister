@@ -1,7 +1,7 @@
 (ns mersenne-twister.core
-  (:import
-   ;; http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/random/MersenneTwister.html
-   [org.apache.commons.math3.random MersenneTwister]))
+  (:import [java.lang Integer]
+           ;; http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/random/MersenneTwister.html
+           [org.apache.commons.math3.random MersenneTwister]))
 
 (defn new-generator
   "Creates a new Mersenne Twister random number generator.
@@ -48,3 +48,13 @@
   ([^MersenneTwister generator]
    (.nextGaussian ^MersenneTwister generator)))
 
+(defn next-int
+  "Returns the next pseudorandom, uniformly distributed int value between 0.0
+  and 1.0 from this random number generator's sequence."
+  ([]
+   (.nextInt ^MersenneTwister @generator))
+  ([thing]
+   (cond (= Integer         (class thing)) (.nextInt ^MersenneTwister @generator ^Integer thing)
+         (= MersenneTwister (class thing)) (.nextInt ^MersenneTwister thing)))
+  ([^MersenneTwister generator ^Integer n]
+   (.nextInt ^MersenneTwister generator ^Integer n)))
