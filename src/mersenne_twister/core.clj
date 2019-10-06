@@ -30,3 +30,12 @@
    (next-double @generator))
   ([^MersenneTwister generator]
    (.nextDouble ^MersenneTwister generator)))
+
+(defn next-float
+  "Returns the next pseudorandom, uniformly distributed float value between 0.0
+  and 1.0 from this random number generator's sequence."
+  ([]
+   (next-float @generator))
+  ([^MersenneTwister generator]
+   (.nextFloat ^MersenneTwister generator)))
+
