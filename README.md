@@ -27,21 +27,27 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 (ns your.cool.code
   (:require [mersenne-twister.core :as twist]))
 
-(next-boolean) ; get a boolean
-(next-float) ; get a float
-(next-double) ; get a double
-(next-gaussian) ; get a normally distributed double
-(next-int) ; get an int
+(twist/next-boolean) ; get a boolean
+(twist/next-float) ; get a float
+(twist/next-double) ; get a double
+(twist/next-gaussian) ; get a normally distributed double
+(twist/next-int) ; get an int
 ;; ... other stuff ...
 ```
 
-* `new-generator`
-* `generator`
-* `next-boolean`
-* `next-double`
-* `next-float`
-* `next-gaussian`
-* `next-int`
+* `new-generator` - Creates a new Mersenne Twister random number generator.
+* `generator` - Default generator to use if none is specified.
+* `next-boolean` - Returns the next pseudorandom, uniformly distributed boolean
+  value from this random number generator's sequence.
+* `next-double` - Returns the next pseudorandom, uniformly distributed double
+  value between 0.0 and 1.0 from this random number generator's sequence.
+* `next-float` - Returns the next pseudorandom, uniformly distributed float
+  value between 0.0 and 1.0 from this random number generator's sequence.
+* `next-gaussian` - Returns the next pseudorandom, Gaussian (\"normally\")
+  distributed double value with mean 0.0 and standard deviation 1.0 from this
+  random number generator's sequence.
+* `next-int` - Returns the next pseudorandom, uniformly distributed int value
+  from this random number generator's sequence.
 
 ## TODO 
 
