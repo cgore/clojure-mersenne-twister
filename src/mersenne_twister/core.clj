@@ -25,13 +25,36 @@
   "Creates a new Mersenne Twister random number generator.
 
   The instance is initialized using the current time plus the system identity
-  hash code of this instance as the seed."
-  []
-  (new MersenneTwister))
+  hash code of this instance as the seed if no seed is specified."
+  ([]
+   (new MersenneTwister))
+  ([seed]
+   (cond (= Integer                (class seed))
+         (new MersenneTwister ^int  seed)
+
+         (= (class (int-array [])) (class seed))
+         (new MersenneTwister ^ints seed)
+
+         (= Long                   (class seed))
+         (new MersenneTwister ^long seed))))
 
 (def generator
   "Default generator to use if none is specified."
   (delay (new-generator)))
+
+(defn set-seed!
+  "Reinitialize the generator as if just built with the given seed."
+  ([seed]
+   (set-seed! @generator seed))
+  ([generator seed]
+   (cond (= Integer                (class seed))
+         (.setSeed generator ^int  seed)
+
+         (= (class (int-array [])) (class seed))
+         (.setSeed generator ^ints seed)
+
+         (= Long                   (class seed))
+         (.setSeed generator ^long seed))))
 
 (defn next-boolean
   "Returns the next pseudorandom, uniformly distributed boolean value from this
