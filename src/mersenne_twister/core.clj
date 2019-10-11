@@ -17,7 +17,7 @@
   Nishimura in 1998: Mersenne Twister: A 623-Dimensionally Equidistributed
   Uniform Pseudo-Random Number Generator, ACM Transactions on Modeling and
   Computer Simulation, Vol. 8, No. 1, January 1998, pp 3--30"
-  (:import [java.lang Integer]
+  (:import [java.lang Integer Long]
            ;; http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/random/MersenneTwister.html
            [org.apache.commons.math3.random MersenneTwister]))
 
@@ -90,3 +90,20 @@
          (= MersenneTwister (class thing)) (.nextInt ^MersenneTwister thing)))
   ([^MersenneTwister generator ^Integer n]
    (.nextInt ^MersenneTwister generator ^Integer n)))
+
+(defn next-long
+  "Returns the next pseudorandom, uniformly distributed long value from this
+  random number generator's sequence. All 264 possible long values should be
+  produced with (approximately) equal probability.
+
+
+  This optionally takes a value `n`, such that it returns a pseudorandom,
+  uniformly distributed long value between 0 (inclusive) and the specified
+  value (exclusive), drawn from this random number generator's sequence. "
+  ([]
+   (.nextLong ^MersenneTwister @generator))
+  ([thing]
+   (cond (= Long            (class thing)) (.nextLong ^MersenneTwister @generator ^Long thing)
+         (= MersenneTwister (class thing)) (.nextLong ^MersenneTwister thing)))
+  ([^MersenneTwister generator ^Long n]
+   (.nextLong ^MersenneTwister generator ^Long n)))

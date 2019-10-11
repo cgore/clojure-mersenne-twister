@@ -2,7 +2,7 @@
 
 The Mersenne Twister PRNG for Clojure.
 
-This library provides a Clojure-friendly wrapper around the MersenneTwister
+This library provides a Clojure-friendly wrapper around the `MersenneTwister`
 class from The Apache Commons Mathematics Library:
 
 http://commons.apache.org/proper/commons-math/
@@ -32,6 +32,7 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 (twist/next-double) ; get a double
 (twist/next-gaussian) ; get a normally distributed double
 (twist/next-int) ; get an int
+(twist/next-long) ; get a long
 ;; ... other stuff ...
 ```
 
@@ -48,6 +49,9 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
   random number generator's sequence.
 * `next-int` - Returns the next pseudorandom, uniformly distributed int value
   from this random number generator's sequence.
+* `next-long` - Returns the next pseudorandom, uniformly distributed long value
+  from this random number generator's sequence. All 264 possible long values
+  should be produced with (approximately) equal probability.
 
 ## TODO 
 
