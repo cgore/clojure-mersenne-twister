@@ -1,5 +1,8 @@
 # mersenne-twister
 
+
+[![Clojars Project](https://img.shields.io/clojars/v/com.cgore/mersenne-twister.svg)](https://clojars.org/com.cgore/mersenne-twister)
+
 The Mersenne Twister PRNG for Clojure.
 
 This library provides a Clojure-friendly wrapper around the `MersenneTwister`
