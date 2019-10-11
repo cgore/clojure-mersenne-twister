@@ -23,6 +23,14 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 
 ## Usage
 
+Add the following to your `project.clj`:
+
+```clojure
+[com.cgore/mersenne-twister "1.0.0"]
+```
+
+And then in your actual code:
+
 ```clojure
 (ns your.cool.code
   (:require [mersenne-twister.core :as twist]))
@@ -33,6 +41,7 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 (twist/next-gaussian) ; get a normally distributed double
 (twist/next-int) ; get an int
 (twist/next-long) ; get a long
+(take 100 (twist/lazy-booleans) ; get 100 booleans
 ;; ... other stuff ...
 ```
 
@@ -52,6 +61,12 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 * `next-long` - Returns the next pseudorandom, uniformly distributed long value
   from this random number generator's sequence. All 264 possible long values
   should be produced with (approximately) equal probability.
+* `lazy-booleans` - Lazy sequence variant of `next-boolean`.
+* `lazy-doubles` - Lazy sequence variant of `next-double`.
+* `lazy-floats` - Lazy sequence variant of `next-float`.
+* `lazy-gaussians` - Lazy sequence variant of `next-gaussian`.
+* `lazy-ints` - Lazy sequence variant of `next-int`.
+* `lazy-longs` - Lazy sequence variant of `next-long`.
 
 ## TODO 
 

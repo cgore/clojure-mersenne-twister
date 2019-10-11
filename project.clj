@@ -1,4 +1,4 @@
-(defproject com.cgore/mersenne-twister "0.1.0-SNAPSHOT"
+(defproject com.cgore/mersenne-twister "1.0.0"
   :description "The Mersenne Twister PRNG for Clojure and ClojureScript."
   :url "https://github.com/cgore/clojure-mersenne-twister"
   :scm {:name "git"

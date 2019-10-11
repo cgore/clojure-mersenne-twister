@@ -122,7 +122,7 @@
 
   This optionally takes a value `n`, such that it returns a pseudorandom,
   uniformly distributed long value between 0 (inclusive) and the specified
-  value (exclusive), drawn from this random number generator's sequence. "
+  value (exclusive), drawn from this random number generator's sequence."
   ([]
    (.nextLong ^MersenneTwister @generator))
   ([thing]
@@ -130,3 +130,76 @@
          (= MersenneTwister (class thing)) (.nextLong ^MersenneTwister thing)))
   ([^MersenneTwister generator ^Long n]
    (.nextLong ^MersenneTwister generator ^Long n)))
+
+(defn lazy-booleans
+  "Returns a lazy sequence of pseudorandom, uniformly distributed boolean value
+  from this random number generator's sequence."
+  ([]
+   (repeatedly next-boolean))
+  ([generator]
+   (repeatedly (partial next-boolean generator))))
+
+(defn lazy-doubles
+  "Returns a lazy sequence of pseudorandom, uniformly distributed double value
+  between 0.0 and 1.0 from this random number generator's sequence."
+  ([]
+   (repeatedly next-double))
+  ([generator]
+   (repeatedly (partial next-double generator))))
+
+(defn lazy-floats
+  "Returns a lazy sequence of pseudorandom, uniformly distributed float value
+  between 0.0 and 1.0 from this random number generator's sequence."
+  ([]
+   (repeatedly next-float))
+  ([generator]
+   (repeatedly (partial next-float generator))))
+
+(defn lazy-gaussians
+  "Returns a lazy sequence of pseudorandom, Gaussian (\"normally\") distributed
+  double value with mean 0.0 and standard deviation 1.0 from this random number
+  generator's sequence."
+  ([]
+   (repeatedly next-gaussian))
+  ([generator]
+   (repeatedly (partial next-gaussian generator))))
+
+(defn lazy-ints
+  "Returns a lazy sequence of pseudorandom, uniformly distributed int value from
+  this random number generator's sequence. All 232 possible int values should be
+  produced with (approximately) equal probability.
+
+  This optionally takes a value `n`, such that it returns a pseudorandom,
+  uniformly distributed int value between 0 (inclusive) and the specified
+  value (exclusive), drawn from this random number generator's sequence.
+
+  When `n` is specified:
+
+   * If n is a power of 2, this method returns (int) ((n * (long) next(31)) >> 31).
+
+   * If n is not a power of 2, what is returned is next(31) % n with next(31)
+     values rejected (i.e. regenerated) until a value that is larger than the
+     remainder of Integer.MAX_VALUE / n is generated. Rejection of this initial
+     segment is necessary to ensure a uniform distribution."
+  ([]
+   (repeatedly next-int))
+  ([thing]
+   (repeatedly (partial next-int thing)))
+  ([generator n]
+   (repeatedly (partial next-int generator n))))
+
+(defn lazy-longs
+  "Returns a lazy sequence of pseudorandom, uniformly distributed long value from
+  this random number generator's sequence. All 264 possible long values should
+  be produced with (approximately) equal probability.
+
+
+  This optionally takes a value `n`, such that it returns a pseudorandom,
+  uniformly distributed long value between 0 (inclusive) and the specified
+  value (exclusive), drawn from this random number generator's sequence. "
+  ([]
+   (repeatedly next-long))
+  ([thing]
+   (repeatedly (partial next-long thing)))
+  ([generator n]
+   (repeatedly (partial next-long generator n))))
