@@ -44,7 +44,7 @@ And then in your actual code:
 (twist/next-gaussian) ; get a normally distributed double
 (twist/next-int) ; get an int
 (twist/next-long) ; get a long
-(take 100 (twist/lazy-booleans) ; get 100 booleans
+(take 100 (twist/lazy-booleans)) ; get 100 booleans
 ;; ... other stuff ...
 ```
 
