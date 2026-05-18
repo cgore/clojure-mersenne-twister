@@ -29,7 +29,7 @@ Simulation, Vol. 8, No. 1, January 1998, pp 3--30
 Add the following to your `project.clj`:
 
 ```clojure
-[com.cgore/mersenne-twister "1.0.0"]
+[com.cgore/mersenne-twister "1.0.1"]
 ```
 
 And then in your actual code:
