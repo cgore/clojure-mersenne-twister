@@ -8,3 +8,7 @@ Initial release.
 ## [1.0.1] - 2026-05-18
 
 Updating to Clojure 1.12.5.
+
+## [1.0.2] - 2026-05-27
+
+Migrating to deps.edn from Leiningen.

@@ -1,0 +1,14 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.5"}
+        org.apache.commons/commons-math3 {:mvn/version "3.6.1"}}
+ :aliases {:test {:extra-paths ["test"]
+                  :extra-deps {lambdaisland/kaocha {:mvn/version "1.91.1392"}
+                               org.clojure/test.check {:mvn/version "1.1.1"}
+                               io.github.cognitect/test-runner {:git/url "git@github.com:cognitect-labs/test-runner.git"
+                                                                :git/tag "v0.5.1"
+                                                                :git/sha "dfb30dd"}}
+                  :main-opts ["-m" "cognitect.test-runner"]}
+           :build {:deps {io.github.clojure/tools.build {:mvn/version "0.10.8"}
+                          slipset/deps-deploy {:mvn/version "0.2.2"}}
+                   :ns-default build}
+           :dev {:extra-paths ["dev"]}}}
